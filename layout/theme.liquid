@@ -281,9 +281,38 @@
 
 
     <!----- Content For Header section -->
-
+    {% unless content_for_header contains "Shopify.designMode" %}
+    {%- capture __content_for_header -%}
     {{ content_for_header }}
+    {%- endcapture -%}
 
+    {%- assign __content_for_header = __content_for_header
+		| replace: 'x.parentNode.insertBefore(s, x);', 'x_parentNode_insertBefore(s.src)'
+    | replace: 'first.parentNode.insertBefore(script, first);', 'first_parentNode_insertBefore(script.src);'
+    | replace: 'const adminBarInjector', 'return; const adminBarInjector'
+    | replace: 'const previewBarInjector', 'return; const previewBarInjector'
+    | replace: 'defer="defer" src="', 'data-src="'
+    -%}
+    {{__content_for_header}}
+    {%- assign find = '<script integrity="' -%}
+    {%- assign chanks = __content_for_header | split: find -%}
+
+    {%- if chanks[1] -%}
+    {%- assign content_for_header = chanks[0] -%}
+    {% capture content_for_header_footer %}
+    {% for ch in chanks %}
+    {%- unless forloop.first -%}
+    {{ find }}{{ ch }}
+    {%- endunless -%}
+    {% endfor %}
+    {% endcapture %}	
+    {%- else -%}
+    {%- assign content_for_headers = __content_for_header -%}
+    {%- endif -%}
+    {{content_for_headers}}
+    {% else %}
+    {{content_for_header}}
+    {% endunless %}
     <!----- Content For Header end section -->
 
 
@@ -367,29 +396,29 @@
             <div class="footer-badges-list">
               <div class="col-item">
                 <div class="text-center">
-                  <img class="lazy2" data-src="https://cdn.shopify.com/s/files/1/0554/4886/2920/files/zenitsu_rapide.png?v=1662562863" style="height: 95px;">
-                  <h4 class="h4">Livraison Rapide dans toute l'Europe</h4>
+                  <img class="lazy2" data-src="https://cdn.shopify.com/s/files/1/2653/6644/files/badge-confiance-shopify-1.png?v=1600760267" style="height: 95px;">
+                  <h3 class="h4">Livraison en Europe</h3>
                 </div>
-                <p></p><center>Vous n'habitez pas en <strong>France</strong> ? Pas de problème, nous livrons partout en <strong>Europe</strong> ! </center><p></p>
+                <p></p><center>Vous n'habitez pas en France ? Pas de problème, nous livrons partout en Europe ! </center><p></p>
               </div>
               <div class="col-item">
                 <div class="text-center">
-                  <img class="lazy2" data-src="https://cdn.shopify.com/s/files/1/0554/4886/2920/files/goku_final.png?v=1662552158" style="height: 95px;">
-                  <h4 class="h4">Satisfait ou Remboursé*</h4>
+                  <img class="lazy2" data-src="https://cdn.shopify.com/s/files/1/2653/6644/files/badge-confiance-shopify-2.png?v=1600760275" style="height: 95px;">
+                  <h3 class="h4">Satisfait ou Remboursé*</h3>
                 </div>
                 <p></p><center>Quelque chose ne va pas ? Ça tombe bien vous avez <strong>14 jours pour changer d'avis</strong></center><p></p>
               </div>
               <div class="col-item">
                 <div class="text-center">
-                  <img class="img90 lazy2" data-src="https://cdn.shopify.com/s/files/1/0554/4886/2920/files/nami_bleu.png?v=1662652520" style="height: 95px;">
-                  <h4 class="h4">Service Après Vente</h4>
+                  <img class="img90 lazy2" data-src="https://cdn.shopify.com/s/files/1/2653/6644/files/badge-confiance-shopify-3.png?v=1600760283" style="height: 95px;">
+                  <h3 class="h4">Service Après Vente</h3>
                 </div>
                 <p></p><center><strong>Besoin d'aide ?</strong> Nous sommes à votre service<strong> du lundi au dimanche</strong></center><p></p>
               </div>
               <div class="col-item">
                 <div class="text-center">
-                  <img class="img90 lazy2" data-src="https://cdn.shopify.com/s/files/1/0554/4886/2920/files/naruto_vf_3.png?v=1662490580" style="height: 95px;">
-                  <h4 class="h4">Paiement sécurisé</h4>
+                  <img class="img90 lazy2" data-src="https://cdn.shopify.com/s/files/1/2653/6644/files/badge-confiance-shopify-4.png?v=1600760290" style="height: 95px;">
+                  <h3 class="h4">Paiement sécurisé</h3>
                 </div>
                 <p></p><center>Nous utilisons le cryptage SSL pour des <strong>paiements en toute sécurité</strong></center><p></p>
               </div>
@@ -402,8 +431,10 @@
 
       {% section 'footer' %}
 
+    <script src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=figurine-manga-france.myshopify.com" defer></script>
 
-      <script type="lazyload2" data-src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=figurine-manga-france.myshopify.com" defer></script>
+
+      
 
       <div id="slideshow-info" class="visually-hidden" aria-hidden="true">
         {{- 'sections.slideshow.navigation_instructions' | t -}}
