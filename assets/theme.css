@@ -7069,5 +7069,5 @@ hr {
 .spr-container { border-color: #ECECEC; background: #F5F5F5 !important; } .spr-review { width: 31%; margin: 0 1% !important; min-height: 250px; display: inline-block; float: left; padding: 20px 25px !important; border-top: 1px solid #DFDFDF; border-top: 1px solid rgba(0,0,0,0.1); background: #fff; margin-bottom: 25px !important; } .spr-icon { color:#ffbb00; } .spr-pagination { clear:both; } #shopify-product-reviews .spr-review-header-title { display:block; clear:both; float:none; } @media(max-width:800px){ .spr-review { float:none; width: 100%; min-height:auto; margin:0 !important; margin-bottom: 25px !important; } }
 
 form .btn, #addToCart, #AddToCart--product-template, .product__add-to-cart-button, .product-form__cart-submit, #addToCart-product-template, .action_button, .add_to_cart, .template-product .cont-content #addToCart, .template-product #tab-1 #addToCartBis, .template-product #addToCartBis, .template-index .index-section--featured-product #addToCart, .template-index .index-section--featured-product #addToCartBis, .template-product .cont-content #addToCartProduct, .rounded { 
-  border-radius:25px !important;
+  border-radius: 0px !important;
 }
