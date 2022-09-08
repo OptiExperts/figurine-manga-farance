@@ -2844,7 +2844,10 @@ hr {
   white-space: normal;
   margin-top: 0;
   margin-bottom: 10px;
-  min-height: 44px; }
+  min-height: 44px; 
+  font-weight: bolder;
+    font-size: 18px;
+}
   .product-single--small-media .product-form__cart-submit, .product-single--small-media .shopify-payment-button .shopify-payment-button__button--unbranded, .shopify-payment-button .product-single--small-media .shopify-payment-button__button--unbranded,
   .product-single--full-media .product-form__cart-submit,
   .product-single--full-media .shopify-payment-button .shopify-payment-button__button--unbranded,
