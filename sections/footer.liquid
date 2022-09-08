@@ -236,7 +236,7 @@
   <hr class="site-footer__hr">
 
   {%- assign socials = "Facebook Twitter Pinterest Instagram Tumblr Snapchat YouTube Vimeo" | split: ' ' -%}
-<h1>this is a test</h1>
+
   <div class="page-width">
     <div class="grid grid--no-gutters small--text-center grid--footer-float-right">
       {%- if show_selectors -%}
@@ -244,9 +244,9 @@
           {%- form 'localization', class: 'selectors-form', data-disclosure-form: '' -%}
             {%- if locale_selector -%}
               <div class="selectors-form__item">
-                <h4 class="visually-hidden" id="lang-heading">
+                <h2 class="visually-hidden" id="lang-heading">
                   {{ 'general.language.dropdown_label' | t }}
-                </h4>
+                </h2>
 
                 <div class="disclosure" data-disclosure-locale>
                   <button type="button" class="disclosure__toggle" aria-expanded="false" aria-controls="lang-list" aria-describedby="lang-heading" data-disclosure-toggle>
@@ -268,9 +268,9 @@
 
             {%- if currency_selector -%}
               <div class="selectors-form__item">
-                <h4 class="visually-hidden" id="currency-heading">
+                <h2 class="visually-hidden" id="currency-heading">
                   {{ 'general.currency.dropdown_label' | t }}
-                </h4>
+                </h2>
 
                 <div class="disclosure" data-disclosure-currency>
                   <button type="button" class="disclosure__toggle" aria-expanded="false" aria-controls="currency-list" aria-describedby="currency-heading" data-disclosure-toggle>
