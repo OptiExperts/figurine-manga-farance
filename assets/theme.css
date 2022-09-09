@@ -2019,7 +2019,9 @@ textarea {
   z-index: 2; }
 
 .site-nav__link:focus .site-nav__label, .site-nav__link:not([disabled]):hover .site-nav__label {
-  border-bottom-color: var(--color-text); }
+  border-bottom-color: var(--color-text); 
+  font-weight: bolder;
+}
 
 @media only screen and (max-width: 989px) {
   .site-nav__link--button {
